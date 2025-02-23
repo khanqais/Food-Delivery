@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.heading {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.restaurant-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.restaurant-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: white;
+    cursor: pointer;
+}
+
+.restaurant-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.promoted-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.offer-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #4a90e2;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.restaurant-info {
+    padding: 16px;
+}
+
+.restaurant-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rating {
+    background: #45b065;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.cuisine {
+    color: #666;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.price-time {
+    display: flex;
+    justify-content: space-between;
+    color: #666;
+    font-size: 14px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <h1 class="heading">Food Delivery Restaurants in Mumbai</h1>
+    <div class="restaurant-grid">
+        <!-- Restaurant Card 1 -->
+        <div class="restaurant-card">
+            <div class="promoted-tag">Promoted</div>
+            <div class="offer-tag">₹125 OFF</div>
+            <img src="/chicken.webp" alt="Big Bowl" class="restaurant-image">
+            <div class="restaurant-info">
+                <div class="restaurant-name">
+                    Big Bowl
+                    <span class="rating">3.9★</span>
+                </div>
+                <div class="cuisine">Chinese, North Indian, Mongolian</div>
+                <div class="price-time">
+                    <span>₹200 for one</span>
+                    <span>28 min</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Restaurant Card 2 -->
+        <div class="restaurant-card">
+            <img src="/burger.webp" alt="Burger King" class="restaurant-image">
+            <div class="restaurant-info">
+                <div class="restaurant-name">
+                    Burger King
+                    <span class="rating">3.9★</span>
+                </div>
+                <div class="cuisine">Burger, Fast Food, Beverages</div>
+                <div class="price-time">
+                    <span>₹150 for one</span>
+                    <span>28 min</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Restaurant Card 3 -->
+        <div class="restaurant-card">
+            <div class="promoted-tag">Promoted</div>
+            <div class="offer-tag">₹50 OFF</div>
+            <img src="/cake.webp" alt="Theobroma" class="restaurant-image">
+            <div class="restaurant-info">
+                <div class="restaurant-name">
+                    Theobroma
+                    <span class="rating">4.3★</span>
+                </div>
+                <div class="cuisine">Bakery, Desserts, Fast Food</div>
+                <div class="price-time">
+                    <span>₹200 for one</span>
+                    <span>18 min</span>
+                </div>
+            </div>
+        </div>
+        <div class="restaurant-card">
+            <div class="promoted-tag">Promoted</div>
+            <div class="offer-tag">₹50 OFF</div>
+            <img src="/pizza.webp" alt="Theobroma" class="restaurant-image">
+            <div class="restaurant-info">
+                <div class="restaurant-name">
+                    Domino's Pizza
+                    <span class="rating">4.3★</span>
+                </div>
+                <div class="cuisine">Bakery, Desserts, Fast Food</div>
+                <div class="price-time">
+                    <span>₹200 for one</span>
+                    <span>18 min</span>
+                </div>
+            </div>
+        </div>
+        <div class="restaurant-card">
+            <div class="promoted-tag">Promoted</div>
+            <div class="offer-tag">₹50 OFF</div>
+            <img src="/street.webp" alt="Theobroma" class="restaurant-image">
+            <div class="restaurant-info">
+                <div class="restaurant-name">
+                    Dadar Social
+                    <span class="rating">4.3★</span>
+                </div>
+                <div class="cuisine">Bakery, Desserts, Fast Food</div>
+                <div class="price-time">
+                    <span>₹200 for one</span>
+                    <span>18 min</span>
+                </div>
+            </div>
+        </div>
+        <div class="restaurant-card">
+            <div class="promoted-tag">Promoted</div>
+            <div class="offer-tag">₹50 OFF</div>
+            <img src="/res.webp" alt="Theobroma" class="restaurant-image">
+            <div class="restaurant-info">
+                <div class="restaurant-name">
+                    Takumi
+                    <span class="rating">4.3★</span>
+                </div>
+                <div class="cuisine">Bakery, Desserts, Fast Food</div>
+                <div class="price-time">
+                    <span>₹200 for one</span>
+                    <span>18 min</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

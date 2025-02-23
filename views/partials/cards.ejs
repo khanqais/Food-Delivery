@@ -1,0 +1,99 @@
+<div class="card-container">
+    <div class="card">
+        <a href="/order" class="card-content">
+            <img src="/biryani.webp" alt="Order Online">
+            <h3>Order Online</h3>
+            <p>Stay home and order to your doorstep</p>
+        </a>
+    </div>
+
+    <div class="card">
+        <a href="https://www.zomato.com/mumbai/restaurants" class="card-content">
+            <img src="/res.webp" alt="Dining">
+            <h3>Dining</h3>
+            <p>View the city's favourite dining venues</p>
+        </a>
+    </div>
+
+    <div class="card">
+        <a href="#" class="card-content" onclick="showAlert(event)">
+            <img src="/event.webp" alt="Live Events">
+            <h3>Live Events</h3>
+            <p>Discover India's best events & concerts</p>
+        </a>
+    </div>
+</div>
+
+<script>
+    function showAlert(event) {
+        event.preventDefault();
+        alert("Not available for now.");
+    }
+</script>
+
+<style>
+    .card-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px;
+        flex-wrap: wrap;
+    }
+
+    .card {
+        width: 400px;
+        border-radius: 15px;
+        overflow: hidden;
+        background: white;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: left;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card a {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .card-content {
+        padding: 15px;
+    }
+
+    .card h3 {
+        font-size: 22px;
+        margin-bottom: 5px;
+    }
+
+    .card p {
+        font-size: 16px;
+        color: #555;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 1200px) {
+        .card {
+            width: 350px;
+        }
+    }
+
+    @media (max-width: 900px) {
+        .card-container {
+            flex-direction: column;
+            align-items: center;
+        }
+        .card {
+            width: 90%;
+        }
+    }
+</style>
