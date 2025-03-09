@@ -1,3 +1,5 @@
+//User-name=postgres
+//Password=admin1234
 require("dotenv").config();
 const authMiddleware = require("./middleware/auth");
 const express = require("express");
