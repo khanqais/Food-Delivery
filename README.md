@@ -1,0 +1,53 @@
+# Food Delivery Website
+
+## Overview
+This is a food delivery website that allows users to browse a variety of dishes, add them to their cart, and place orders seamlessly. The website provides a user-friendly interface and a smooth ordering experience.
+
+## Live Demo
+[Click here to visit the website](https://food-delivery-5ypc.onrender.com/)
+
+## Features
+- Browse a variety of food items
+- Add items to the cart
+- Place orders easily
+- Responsive design for mobile and desktop
+- User-friendly interface
+
+## Technologies Used
+- React.js (Frontend)
+- Node.js & Express.js (Backend)
+- MongoDB (Database)
+- Render (Hosting)
+
+## Installation & Setup
+To run this project locally, follow these steps:
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/yourusername/your-repo-name.git
+   cd your-repo-name
+   ```
+2. Install dependencies for both frontend and backend:
+   ```sh
+   cd client
+   npm install
+   cd ../server
+   npm install
+   ```
+3. Start the development server:
+   ```sh
+   cd client
+   npm start
+   ```
+   In another terminal:
+   ```sh
+   cd server
+   npm start
+   ```
+
+## Contributing
+Feel free to fork the repository and submit pull requests. Any contributions are welcome!
+
+## License
+This project is open-source and available under the MIT License.
+
