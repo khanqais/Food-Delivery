@@ -14,7 +14,8 @@ This is a food delivery website that allows users to browse a variety of dishes,
 - User-friendly interface
 
 ## Technologies Used
-- React.js (Frontend)
+- EJS (Templating Engine)
+- HTML, CSS, JavaScript (Frontend)
 - Node.js & Express.js (Backend)
 - MongoDB (Database)
 - Render (Hosting)
@@ -27,21 +28,12 @@ To run this project locally, follow these steps:
    git clone https://github.com/yourusername/your-repo-name.git
    cd your-repo-name
    ```
-2. Install dependencies for both frontend and backend:
+2. Install dependencies:
    ```sh
-   cd client
-   npm install
-   cd ../server
    npm install
    ```
 3. Start the development server:
    ```sh
-   cd client
-   npm start
-   ```
-   In another terminal:
-   ```sh
-   cd server
    npm start
    ```
 
