@@ -12,7 +12,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "This is a food delivery website that allows users to browse a variety of dishes, add them to their cart, and place orders seamlessly. The website provides a user-friendly interface and a smooth ordering experience.",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "bcryptjs": "^3.0.2",
