@@ -10,6 +10,7 @@ router.get('/order',(req,res)=>{
     return res.render('order',{user:req.user,currentPage: 'order' })
 })
 
+
 router.get('/login', (req, res) => {
     return res.render('login', { user: req.user, currentPage: 'login' });
 });
@@ -19,6 +20,7 @@ router.get('/logout', (req, res) => {
 });
 router.post('/signup', register);
 router.post('/login', login);
+
 
 module.exports = router;
 

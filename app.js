@@ -24,6 +24,11 @@ app.get("/", (req, res) => {
   res.render("index", { user: req.user, currentPage: "home" });
 });
 
+
+app.get('/restaurant', (req, res) => {
+  res.render('restaurant', { currentPage: 'restaurant', user: req.user });
+});
+
 const PORT = process.env.PORT || 4000;
 
 const start = async () => {
