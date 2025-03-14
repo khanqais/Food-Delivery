@@ -10,7 +10,7 @@ html, body {
 
 .navbar {
     position: absolute;
-    top: -20px; /* Move the navbar up */
+    top: -20px; 
     width: 100%;
     z-index: 1000;
     background-color: transparent !important;
