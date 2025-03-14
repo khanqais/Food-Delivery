@@ -41,7 +41,7 @@
     }
 
     .card {
-        width: 400px;
+        width: 350px;
         border-radius: 15px;
         overflow: hidden;
         background: white;
@@ -57,9 +57,12 @@
     }
 
     .card img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block; /* Ensures no unwanted spacing */
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
     }
 
     .card-content {
