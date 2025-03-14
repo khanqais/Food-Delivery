@@ -24,7 +24,6 @@ app.get("/", (req, res) => {
   res.render("index", { user: req.user, currentPage: "home" });
 });
 
-
 app.get('/restaurant', (req, res) => {
   res.render('restaurant', { currentPage: 'restaurant', user: req.user });
 });
