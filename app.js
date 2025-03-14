@@ -4,7 +4,6 @@ require("dotenv").config();
 const authMiddleware = require("./middleware/auth");
 const express = require("express");
 const app = express();
-const port = 3000;
 const cookieParser = require("cookie-parser");
 const connectDB = require("./DB/connect");
 const path = require("path");
