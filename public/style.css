@@ -15,12 +15,13 @@
     margin-left: auto;
     display: flex;
     gap: 20px; 
+    
 }
 
 .navbar-brand, .nav-link {
     font-size: 1.25rem;
     padding: 0.75rem 0.5rem;
-    color: white !important;
+    color: black;
 }
 
 .nav-link.active, 

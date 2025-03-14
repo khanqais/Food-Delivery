@@ -3,6 +3,7 @@
   <head>
     <%- include('./partials/head') %>
     <title>Sign Up</title>
+    <link rel="stylesheet" href="/style.css" />
     <style>
         body {
   background-image: url('/2.webp');
@@ -73,6 +74,7 @@
     </style>
   </head>
   <body>
+    <%-include('./partials/nav') %> 
     <div class="auth-container">
       <div class="auth-card">
         <h2 class="auth-title">Create Account</h2>
@@ -119,7 +121,7 @@
         </form>
 
         <div class="auth-links">
-          Already have an account? <a href="/signin">Sign in</a>
+          Already have an account? <a href="/login">Sign in</a>
         </div>
       </div>
     </div>
