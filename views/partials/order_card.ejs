@@ -93,13 +93,61 @@
     color: #666;
     font-size: 14px;
 }
+.counter-container{
+    margin-top: 10px;
+}
+.counter-btn {
+    background: #4a90e2;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    margin: 0 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.counter-btn:hover {
+    background: #3a80d2;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.counter-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.counter-btn:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+    box-shadow: none;
+    opacity: 0.7;
+}
+
+.counter {
+    font-size: 18px;
+    font-weight: bold;
+    min-width: 30px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+}
 </style>
 </head>
 <body>
 <div class="container">
     <h1 class="heading">Food Delivery Restaurants in Mumbai</h1>
     <div class="restaurant-grid">
-        <!-- Restaurant Card 1 -->
+        
         <div class="restaurant-card">
             <div class="promoted-tag">Promoted</div>
             <div class="offer-tag">₹125 OFF</div>
@@ -114,10 +162,15 @@
                     <span>₹200 for one</span>
                     <span>28 min</span>
                 </div>
+                <div class="counter-container">
+                    <button class="counter-btn" onclick="decreaseCounter(this)">−</button>
+                    <span class="counter">0</span>
+                    <button class="counter-btn" onclick="increaseCounter(this)">+</button>
+                </div>
             </div>
         </div>
 
-        <!-- Restaurant Card 2 -->
+        
         <div class="restaurant-card">
             <img src="/burger.webp" alt="Burger King" class="restaurant-image">
             <div class="restaurant-info">
@@ -130,10 +183,15 @@
                     <span>₹150 for one</span>
                     <span>28 min</span>
                 </div>
+                <div class="counter-container">
+                    <button class="counter-btn" onclick="decreaseCounter(this)">−</button>
+                    <span class="counter">0</span>
+                    <button class="counter-btn" onclick="increaseCounter(this)">+</button>
+                </div>
             </div>
         </div>
 
-        <!-- Restaurant Card 3 -->
+        
         <div class="restaurant-card">
             <div class="promoted-tag">Promoted</div>
             <div class="offer-tag">₹50 OFF</div>
@@ -147,6 +205,11 @@
                 <div class="price-time">
                     <span>₹200 for one</span>
                     <span>18 min</span>
+                </div>
+                <div class="counter-container">
+                    <button class="counter-btn" onclick="decreaseCounter(this)">−</button>
+                    <span class="counter">0</span>
+                    <button class="counter-btn" onclick="increaseCounter(this)">+</button>
                 </div>
             </div>
         </div>
@@ -164,6 +227,11 @@
                     <span>₹200 for one</span>
                     <span>18 min</span>
                 </div>
+                <div class="counter-container">
+                    <button class="counter-btn" onclick="decreaseCounter(this)">−</button>
+                    <span class="counter">0</span>
+                    <button class="counter-btn" onclick="increaseCounter(this)">+</button>
+                </div>
             </div>
         </div>
         <div class="restaurant-card">
@@ -180,8 +248,14 @@
                     <span>₹200 for one</span>
                     <span>18 min</span>
                 </div>
+                <div class="counter-container">
+                    <button class="counter-btn" onclick="decreaseCounter(this)">−</button>
+                    <span class="counter">0</span>
+                    <button class="counter-btn" onclick="increaseCounter(this)">+</button>
+                </div>
             </div>
         </div>
+
         <div class="restaurant-card">
             <div class="promoted-tag">Promoted</div>
             <div class="offer-tag">₹50 OFF</div>
@@ -196,9 +270,29 @@
                     <span>₹200 for one</span>
                     <span>18 min</span>
                 </div>
+                <div class="counter-container">
+                    <button class="counter-btn" onclick="decreaseCounter(this)">−</button>
+                    <span class="counter">0</span>
+                    <button class="counter-btn" onclick="increaseCounter(this)">+</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    function increaseCounter(button) {
+        let counterElement = button.previousElementSibling;
+        let count = parseInt(counterElement.innerText);
+        counterElement.innerText = count + 1;
+    }
+    
+    function decreaseCounter(button) {
+        let counterElement = button.nextElementSibling;
+        let count = parseInt(counterElement.innerText);
+        if (count > 0) {
+            counterElement.innerText = count - 1;
+        }
+    }
+    </script>
 </body>
 </html>
