@@ -9,7 +9,16 @@ const connectDB = require("./DB/connect");
 const path = require("path");
 const cors = require("cors");
 const authRouter = require("./routes/auth");
+const passport=require('passport')
+const session=require('express-session')
 
+app.use(session({
+   secret:"secret",
+   resave:false,
+   saveUninitialized:true,
+}))
+app.use(passport.initialize())
+app.use(passport.session())
 app.use(cookieParser());
 app.use(authMiddleware);
 app.use(express.static(path.join(__dirname, "public")));
