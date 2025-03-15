@@ -14,6 +14,7 @@ html, body {
     width: 100%;
     z-index: 1000;
     background-color: transparent !important;
+    
 }
 
 .navbar-brand {
@@ -23,16 +24,16 @@ html, body {
 }
 
 .navbar-nav {
-    margin-left: 550px;
+    margin-left: 500px;
     display: flex;
-    gap: 20px; 
-    
+    gap:20px; 
 }
 
 .navbar-brand, .nav-link {
     font-size: 1.25rem;
     padding: 0.75rem 0.5rem;
     color: black;
+    font-weight:600;
 }
 
 .nav-link.active, 
