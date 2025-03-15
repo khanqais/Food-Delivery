@@ -1,6 +1,10 @@
 const User = require("../model/user");
 const { BadRequestError, UnauthenticatedError } = require("../errors");
 const { StatusCodes } = require("http-status-codes");
+const jwt=require('jsonwebtoken')
+const nodemailer=require('nodemailer')
+const bcrypt = require("bcryptjs");
+
 
 const register = async (req, res) => {
     try {
@@ -36,7 +40,64 @@ const login = async (req, res) => {
     }
 };
 
+const forgetpassword=async(req,res)=>{
+    try {
+        const {email}=req.body;
+        if(!email){
+            return res.status(400).send({message:"please provide the email"});
+        }
+        const checkuser= await User.findOne({email});
+        if(!checkuser){
+            return res.status(400).send({message:"User Not Found"});
+        }
+        const token= jwt.sign({email},process.env.JWT_SECRET,{expiresIn:"1h"})
+        const tranporter=nodemailer.createTransport({
+            service:"gmail",
+            secure:true,
+            auth:{
+                user:process.env.MY_EMAIL,
+                pass:process.env.MY_PASSWORD,
+            },
+        })
+        const receiver={
+            from:"qais34913@gmail.com",
+            to:email,
+            subject:"Password Reset Request",
+            text:`Click on this link to generate your password ${process.env.CLIENT_URL}/reset-password/${token}`
+        }
+    await tranporter.sendMail(receiver)
+    return res.status(200).render("forgot-password", { successMessage: "Password reset link sent successfully!" });
+    } catch (error) {
+        console.log(error);
+        
+    }
+}
+
+const resetpassword = async (req, res) => {
+    try {
+        const { token } = req.params; 
+        const { password } = req.body;
+
+        if (!password) {
+            return res.status(400).render("reset-password", { errorMessage: "Error in password", token });
+        }
+
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const user = await User.findOne({ email: decoded.email });
+
+        user.password = password;
+        await user.save();
+
+        return res.status(200).render("reset-password", { successMessage: "Password has been reset successfully!", token });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).render("reset-password", { errorMessage: "Something went wrong. Please try again.", token });
+    }
+};
+
 module.exports = {
     login,
     register,
+    forgetpassword,
+    resetpassword
 };
