@@ -3,18 +3,22 @@
   <head>
     <%- include('./partials/head') %>
     <title>Sign Up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="/style.css" />
     <style>
-        body {
-  background-image: url('/2.webp');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
+      body {
+        background-image: url('/2.webp');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        font-family: 'Poppins', sans-serif;
+      }
+
       .auth-container {
         min-height: 100vh;
         display: flex;
         align-items: center;
+        justify-content: center;
         padding: 2rem;
       }
 
@@ -22,71 +26,191 @@
         width: 100%;
         max-width: 400px;
         margin: 0 auto;
-        padding: 2rem;
-        background: #fff;
-        border-radius: 8px;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+        padding: 1.75rem;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        margin-top: 40px;
       }
 
+     
       .auth-title {
-        font-size: 1.5rem;
-        font-weight: 500;
-        margin-bottom: 1.5rem;
+        font-size: 1.6rem;
+        font-weight: 600;
+        margin-bottom: 1.25rem;
         text-align: center;
+        color: #333;
       }
 
       .form-control {
         width: 100%;
-        height: 44px;
-        padding: 0.75rem;
-        border: 1px solid #ddd;
-        border-radius: 4px;
+        height: 45px;
+        padding: 0.6rem 1rem;
+        border: 1px solid #e1e1e1;
+        border-radius: 8px;
         margin-bottom: 1rem;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        font-size: 0.95rem;
+      }
+
+      .form-control:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        outline: none;
       }
 
       .btn-primary {
         width: 100%;
-        padding: 0.75rem;
+        padding: 0.6rem;
         background: #007bff;
         color: white;
         border: none;
-        border-radius: 4px;
+        border-radius: 8px;
         cursor: pointer;
+        font-size: 0.95rem;
+        font-weight: 500;
+        transition: background-color 0.3s ease;
+        height: 45px;
+      }
+
+      .btn-primary:hover {
+        background: #0069d9;
       }
 
       .error-message {
-        background: #fee;
-        color: #c00;
-        padding: 0.75rem;
-        border-radius: 4px;
+        background: #fff0f0;
+        color: #e53935;
+        padding: 0.6rem;
+        border-radius: 8px;
         margin-bottom: 1rem;
+        border-left: 4px solid #e53935;
+        font-size: 0.9rem;
+      }
+
+      .divider {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        margin: 1.25rem 0;
+        color: #777;
+      }
+
+      .divider::before,
+      .divider::after {
+        content: '';
+        flex: 1;
+        border-bottom: 1px solid #e1e1e1;
+      }
+
+      .divider::before {
+        margin-right: 1rem;
+      }
+
+      .divider::after {
+        margin-left: 1rem;
+      }
+
+      .btn-google {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 0.6rem;
+        background: white;
+        color: #444;
+        border: 1px solid #e1e1e1;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        text-decoration: none;
+        font-weight: 500;
+        height: 45px;
+      }
+
+      .btn-google:hover {
+        background: #f8f9fa;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      .google {
+        font-size: 1.15rem;
+        margin-right: 10px;
+        color: #4285F4;
       }
 
       .auth-links {
         text-align: center;
-        margin-top: 1rem;
+        margin-top: 1.25rem;
+        color: #666;
+        font-size: 0.9rem;
       }
 
       .auth-links a {
         color: #007bff;
         text-decoration: none;
+        transition: color 0.3s ease;
+        font-weight: 500;
+      }
+
+      .auth-links a:hover {
+        color: #0056b3;
+        text-decoration: underline;
+      }
+
+      .form-group {
+        position: relative;
+        margin-bottom: 1rem;
+      }
+
+      .form-group i.input-icon {
+        position: absolute;
+        left: 15px;
+        top: 14px;
+        color: #aaa;
+        font-size: 0.9rem;
+      }
+
+      .form-group input {
+        padding-left: 40px;
+      }
+      
+      
+      .password-toggle {
+        position: absolute;
+        right: 15px;
+        top: 14px;
+        color: #aaa;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: color 0.2s ease;
+      }
+      
+      .password-toggle:hover {
+        color: #007bff;
+      }
+      
+      .form-group input[type="password"],
+      .form-group input[type="text"].password-visible {
+        padding-right: 40px;
       }
     </style>
   </head>
   <body>
-    <%-include('./partials/nav') %> 
+    <%- include('./partials/nav') %> 
     <div class="auth-container">
       <div class="auth-card">
         <h2 class="auth-title">Create Account</h2>
 
         <% if (typeof errorMessage !== 'undefined' && errorMessage) { %>
           <div class="error-message">
-            <%= errorMessage %>
+            <i class="fas fa-exclamation-circle"></i> <%= errorMessage %>
           </div>
         <% } %>
 
         <form action="/signup" method="POST">
-          <div>
+          <div class="form-group">
+            <i class="fas fa-user input-icon"></i>
             <input 
               type="text" 
               class="form-control" 
@@ -96,7 +220,8 @@
             >
           </div>
 
-          <div>
+          <div class="form-group">
+            <i class="fas fa-envelope input-icon"></i>
             <input 
               type="email" 
               class="form-control" 
@@ -106,24 +231,55 @@
             >
           </div>
 
-          <div>
+          <div class="form-group">
+            <i class="fas fa-lock input-icon"></i>
             <input 
               type="password" 
               class="form-control" 
               placeholder="Password (min 6 characters)" 
               name="password"
+              id="password-field"
               minlength="6"
               required
             >
+            <i class="fas fa-eye password-toggle" id="password-toggle"></i>
           </div>
 
           <button type="submit" class="btn btn-primary">Create Account</button>
         </form>
+
+        <div class="divider">OR</div>
+
+        <a href="/auth/google" class="btn-google">
+          <i class="fab fa-google google"></i>
+          Sign up with Google
+        </a>
 
         <div class="auth-links">
           Already have an account? <a href="/login">Sign in</a>
         </div>
       </div>
     </div>
+    
+    <script>
+      
+      document.addEventListener('DOMContentLoaded', function() {
+        const passwordField = document.getElementById('password-field');
+        const passwordToggle = document.getElementById('password-toggle');
+        
+        passwordToggle.addEventListener('click', function() {
+          // Toggle password visibility
+          if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            passwordToggle.classList.remove('fa-eye');
+            passwordToggle.classList.add('fa-eye-slash');
+          } else {
+            passwordField.type = 'password';
+            passwordToggle.classList.remove('fa-eye-slash');
+            passwordToggle.classList.add('fa-eye');
+          }
+        });
+      });
+    </script>
   </body>
 </html>

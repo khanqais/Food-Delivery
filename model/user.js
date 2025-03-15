@@ -3,6 +3,10 @@ const mongoose=require('mongoose')
 const bcrpt=require('bcryptjs')
 const jwt= require('jsonwebtoken')
 const UserSchema=new mongoose.Schema({
+    googleId: { type: String, 
+        unique: true 
+
+    },
     name:{
         type:String,
         required:[true,'PLease provide name'],
@@ -18,15 +22,23 @@ const UserSchema=new mongoose.Schema({
     },
     password:{
         type:String,
-        required:[true,'PLease provide password'],
+        required: function() {
+            return !this.googleId;
+        },
         minlength:6,
     },
+    profilePicture: {
+        type: String
+    }
  
 })
 
-UserSchema.pre('save',async function(next){
-    const salt= await bcrpt.genSalt(10);
-    this.password= await bcrpt.hash(this.password,salt)
+UserSchema.pre('save', async function(next) {
+    if (this.password) {
+        const salt = await bcrpt.genSalt(10);
+        this.password = await bcrpt.hash(this.password, salt);
+    }
+    next();
 })
 
 UserSchema.methods.createJWT = function () {

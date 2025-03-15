@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { login, register,forgetpassword,resetpassword } = require("../controllers/auth");
+const passport = require("passport");
 
 router.get("/signup", (req, res) => {
     return res.render("signup", { user: req.user, currentPage: "signup", errorMessage: null });
@@ -20,11 +21,41 @@ router.get("/reset-password/:token", (req, res) => {
     return res.render("reset-password", { user: req.user, token: req.params.token, errorMessage: null });
 });
 
+// Update the Google authentication route
+router.get("/auth/google", passport.authenticate("google", {
+    scope: ["profile", "email"],
+    prompt: "select_account"  // This forces Google to show account selection
+}));
+
+router.get(
+    "/auth/google/callback",
+    passport.authenticate("google", { failureRedirect: "/login" }),
+    (req, res) => {
+       
+        const token = req.user.createJWT();
+        
+        res.cookie("token", token, {
+            httpOnly: true,
+            expires: new Date(Date.now() + 24 * 60 * 60 * 1000)
+        });
+        res.redirect("/");
+    }
+);
+
+
+
 
 
 router.get("/logout", (req, res) => {
+   
     res.clearCookie("token");
-    res.redirect("/");
+    
+    req.logout(function(err) {
+        if (err) {
+            console.error("Logout error:", err);
+        }
+        res.redirect("/");
+    });
 });
 
 router.post("/signup", register);

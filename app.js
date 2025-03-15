@@ -10,12 +10,18 @@ const path = require("path");
 const cors = require("cors");
 const authRouter = require("./routes/auth");
 const passport=require('passport')
-const session=require('express-session')
+const session=require('express-session');
+const { profile } = require("console");
+const user = require("./model/user");
+const Google=require("passport-google-oauth20").Strategy 
 
 app.use(session({
-   secret:"secret",
-   resave:false,
-   saveUninitialized:true,
+  secret: process.env.SESSION_SECRET || "secret",
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 24 * 60 * 60 * 1000 // 1 day
+  }
 }))
 app.use(passport.initialize())
 app.use(passport.session())
@@ -31,6 +37,79 @@ app.use("/", authRouter);
 app.get("/", (req, res) => {
   res.render("index", { user: req.user, currentPage: "home" });
 });
+
+// passport.use(
+//   new Google(
+//     {
+//       clientID: process.env.GOOGLE_CLIENT_ID,
+//       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+//       callbackURL: "http://localhost:4000/auth/google/callback",
+//     },
+//     (accessToken, refreshToken, profile, done) => {
+//       return done(null, profile);
+//     }
+//   )
+// );
+// passport.serializeUser((user,done)=> done(null,user))
+// passport.deserializeUser((user,done)=> done(null,user))
+
+passport.use(
+  new Google(
+    {
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: "http://localhost:4000/auth/google/callback",
+    },
+    async (accessToken, refreshToken, profile, done) => {
+      try {
+        // First try to find a user with this googleId
+        let existingUser = await user.findOne({ googleId: profile.id });
+
+        if (existingUser) {
+          return done(null, existingUser);
+        }
+        
+        // If no user found by googleId, check if email exists (user might have registered with email/password)
+        let userByEmail = await user.findOne({ email: profile.emails[0].value });
+        
+        if (userByEmail) {
+          // Update the existing user with Google info
+          userByEmail.googleId = profile.id;
+          userByEmail.profilePicture = profile.photos[0].value;
+          await userByEmail.save();
+          return done(null, userByEmail);
+        }
+
+        // Create new user if not exists
+        const newUser = new user({
+          googleId: profile.id,
+          name: profile.displayName,
+          email: profile.emails[0].value,
+          profilePicture: profile.photos[0].value,
+        });
+
+        await newUser.save();
+        return done(null, newUser);
+      } catch (err) {
+        console.error("Google auth error:", err);
+        return done(err, null);
+      }
+    }
+  )
+);
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser(async (id, done) => {
+  try {
+    const foundUser = await user.findById(id);
+    done(null, foundUser);
+  } catch (err) {
+    done(err, null);
+  }
+});
+
 
 app.get('/restaurant', (req, res) => {
   res.render('restaurant', { currentPage: 'restaurant', user: req.user });
