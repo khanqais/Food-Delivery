@@ -4,7 +4,7 @@
 This is a food delivery website that allows users to browse a variety of dishes, add them to their cart, and place orders seamlessly. The website provides a user-friendly interface and a smooth ordering experience.
 
 ## Live Demo
-[Click here to visit the website](https://food-delivery-4-sw7y.onrender.com)
+[Click here to visit the website](https://food-delivery-4-sw7y.onrender.com/)
 
 ## Features
 - Browse a variety of food items
