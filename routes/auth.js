@@ -8,8 +8,13 @@ router.get("/signup", (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-    return res.render("login", { user: req.user, currentPage: "login", errorMessage: null });
+    return res.render("login", { 
+        user: req.user || null,  // Ensure user is defined
+        currentPage: "login"
+    });
 });
+
+
 
 router.get("/order", (req, res) => {
     return res.render("order", { user: req.user, currentPage: "order" });
@@ -21,10 +26,9 @@ router.get("/reset-password/:token", (req, res) => {
     return res.render("reset-password", { user: req.user, token: req.params.token, errorMessage: null });
 });
 
-// Update the Google authentication route
 router.get("/auth/google", passport.authenticate("google", {
     scope: ["profile", "email"],
-    prompt: "select_account"  // This forces Google to show account selection
+    prompt: "select_account"  
 }));
 
 router.get(
