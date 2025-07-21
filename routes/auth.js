@@ -9,7 +9,7 @@ router.get("/signup", (req, res) => {
 
 router.get("/login", (req, res) => {
     return res.render("login", { 
-        user: req.user || null,  // Ensure user is defined
+        user: req.user || null,  
         currentPage: "login"
     });
 });
@@ -45,10 +45,6 @@ router.get(
         res.redirect("/");
     }
 );
-
-
-
-
 
 router.get("/logout", (req, res) => {
    
