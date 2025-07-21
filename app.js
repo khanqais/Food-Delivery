@@ -13,6 +13,7 @@ const passport=require('passport')
 const session=require('express-session');
 const { profile } = require("console");
 const user = require("./model/user");
+const { default: axios } = require("axios");
 const Google=require("passport-google-oauth20").Strategy 
 
 app.use(session({
