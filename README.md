@@ -10,7 +10,7 @@ This is a food delivery website that allows users to browse a variety of dishes,
 
 Watch a short video demo of the app:
 
-[▶️ Click to watch Demo.mp4](assests/Demo.mp4)
+[▶️ Click to watch Demo.mp4](assests/Demo1(1).mp4)
 
 
 
