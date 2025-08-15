@@ -106,7 +106,7 @@ app.get('/restaurant', (req, res) => {
 
 setInterval(() => {
   axios.get("https://food-delivery-2un8.onrender.com/");
-}, 1000 * 60 * 14);
+}, 1000 * 60 * 15);
 
 
 const PORT = process.env.PORT || 4000;
