@@ -5,11 +5,8 @@ This is a food delivery website that allows users to browse a variety of dishes,
 
 
 
-## 📽️ Demo
-
-Watch a short video demo of the app:
-
-[▶️ Click to watch Demo.mp4](https://youtu.be/2e94icDkjCg)
+Live Demo:<br>
+👉 [Live Demo](https://food-delivery-4-sw7y.onrender.com/)
 
 
 
