@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <%- include('./partials/head') %>
-    <title>Sign In</title>
+    <title>Login In</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="/style.css" />
     <link rel="icon" href="/logo.png" type="image/png">
@@ -13,29 +13,95 @@
         background-position: center;
         background-repeat: no-repeat;
         font-family: 'Poppins', sans-serif;
+        overflow-x: hidden;
+      }
+
+      .navbar {
+        position: relative !important;
+        background-color: rgba(0, 0, 0, 0.9) !important;
+        padding: 10px 0;
+        z-index: 1050;
+      }
+
+      .navbar-brand {
+        color: white !important;
+        font-size: 1.3rem;
+        font-weight: bold;
+        margin-left: 0;
+      }
+
+      .navbar-nav {
+        gap: 5px;
+        margin: 0;
+      }
+
+      .nav-link {
+        color: white !important;
+        font-size: 1.1rem;
+        text-align: center;
+        padding: 10px 15px;
+        transition: color 0.3s ease;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        color: #f5deb3 !important;
+      }
+
+      .navbar-collapse {
+        background: rgba(0, 0, 0, 0.95);
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 10px;
+      }
+
+      .navbar-toggler {
+        border-color: rgba(255, 255, 255, 0.5);
+        margin-right: 15px;
+      }
+
+      .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      }
+
+      .dropdown-menu {
+        background-color: white;
+        font-size: 1.1rem;
+        padding: 0.5rem 0;
+        border: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+
+      .dropdown-item {
+        color: black !important;
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        transition: background-color 0.3s ease;
+      }
+
+      .dropdown-item:hover {
+        background-color: #f8f9fa;
       }
 
       .auth-container {
-        min-height: 100vh;
+        min-height: calc(100vh - 80px);
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 2rem;
+        padding: 2rem 1rem;
       }
 
       .auth-card {
         width: 100%;
         max-width: 400px;
         margin: 0 auto;
-        padding: 1.75rem;
+        padding: 2rem;
         background: rgba(255, 255, 255, 0.95);
-        border-radius: 12px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        
-        margin-top: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        backdrop-filter: blur(10px);
       }
-
-      
 
       .auth-title {
         font-size: 1.8rem;
@@ -45,48 +111,87 @@
         color: #333;
       }
 
+      .form-group {
+        position: relative;
+        margin-bottom: 1.25rem;
+      }
+
       .form-control {
         width: 100%;
         height: 50px;
-        padding: 0.75rem 1rem;
-        border: 1px solid #e1e1e1;
-        border-radius: 8px;
-        margin-bottom: 1.25rem;
-        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        padding: 0.75rem 2.5rem 0.75rem 2.5rem;
+        border: 2px solid #e1e1e1;
+        border-radius: 10px;
+        transition: all 0.3s ease;
         font-size: 1rem;
+        background: rgba(255, 255, 255, 0.9);
       }
 
       .form-control:focus {
         border-color: #007bff;
         box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
         outline: none;
+        background: white;
+      }
+
+      .email-icon, .lock-icon {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #666;
+        font-size: 1.1rem;
+        z-index: 10;
+      }
+
+      .toggle-password {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: #666;
+        font-size: 1.1rem;
+        z-index: 10;
+        transition: color 0.3s ease;
+      }
+
+      .toggle-password:hover {
+        color: #333;
       }
 
       .btn-primary {
         width: 100%;
         padding: 0.75rem;
-        background: #007bff;
+        background: linear-gradient(135deg, #007bff, #0056b3);
         color: white;
         border: none;
-        border-radius: 8px;
+        border-radius: 10px;
         cursor: pointer;
         font-size: 1rem;
-        font-weight: 500;
-        transition: background-color 0.3s ease;
+        font-weight: 600;
+        transition: all 0.3s ease;
         height: 50px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
       }
 
       .btn-primary:hover {
-        background: #0069d9;
+        background: linear-gradient(135deg, #0056b3, #004085);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
       }
 
       .error-message {
-        background: #fff0f0;
-        color: #e53935;
-        padding: 0.75rem;
-        border-radius: 8px;
+        background: linear-gradient(135deg, #fff0f0, #ffe6e6);
+        color: #dc3545;
+        padding: 1rem;
+        border-radius: 10px;
         margin-bottom: 1.25rem;
-        border-left: 4px solid #e53935;
+        border-left: 4px solid #dc3545;
+        display: flex;
+        align-items: center;
+        gap: 10px;
       }
 
       .divider {
@@ -95,13 +200,14 @@
         text-align: center;
         margin: 1.5rem 0;
         color: #777;
+        font-weight: 500;
       }
 
       .divider::before,
       .divider::after {
         content: '';
         flex: 1;
-        border-bottom: 1px solid #e1e1e1;
+        border-bottom: 2px solid #e1e1e1;
       }
 
       .divider::before {
@@ -120,10 +226,10 @@
         padding: 0.75rem;
         background: white;
         color: #444;
-        border: 1px solid #e1e1e1;
-        border-radius: 8px;
+        border: 2px solid #e1e1e1;
+        border-radius: 10px;
         cursor: pointer;
-        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        transition: all 0.3s ease;
         text-decoration: none;
         font-weight: 500;
         height: 50px;
@@ -131,7 +237,9 @@
 
       .btn-google:hover {
         background: #f8f9fa;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+        border-color: #4285F4;
       }
 
       .google {
@@ -144,13 +252,14 @@
         text-align: center;
         margin-top: 1.5rem;
         color: #666;
+        font-weight: 500;
       }
 
       .auth-links a {
         color: #007bff;
         text-decoration: none;
         transition: color 0.3s ease;
-        font-weight: 500;
+        font-weight: 600;
       }
 
       .auth-links a:hover {
@@ -159,56 +268,183 @@
       }
 
       .forgot {
-        margin-top: 12px;
+        margin-top: 15px;
+        text-align: center;
       }
 
-      .form-group {
-  position: relative;
-  margin-bottom: 1.25rem;
-}
-.email-icon {
-  position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #aaa;
-}
+      .forgot a {
+        color: #007bff;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
 
-.form-group input {
-  padding-left: 40px; 
-}
+      .forgot a:hover {
+        color: #0056b3;
+        text-decoration: underline;
+      }
 
+      .g-recaptcha {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+      }
 
-.lock-icon {
-  position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #aaa;
-}
+      @media (max-width: 768px) {
+        .auth-container {
+          padding: 1rem 0.5rem;
+          min-height: calc(100vh - 70px);
+        }
 
-.toggle-password {
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  color: #aaa;
-}
+        .auth-card {
+          padding: 1.5rem;
+          margin: 0 0.5rem;
+          border-radius: 12px;
+        }
 
-.toggle-password:hover {
-  color: #333;
-}
+        .auth-title {
+          font-size: 1.6rem;
+          margin-bottom: 1.5rem;
+        }
 
-.form-group input {
-  padding-left: 40px; 
-  padding-right: 40px; 
-}
-.g-recaptcha{
-  margin-bottom: 20px;
-}
+        .form-control {
+          height: 45px;
+          font-size: 0.9rem;
+          padding: 0.6rem 2.2rem 0.6rem 2.2rem;
+        }
 
+        .btn-primary,
+        .btn-google {
+          height: 45px;
+          font-size: 0.9rem;
+        }
 
+        .email-icon,
+        .lock-icon,
+        .toggle-password {
+          font-size: 1rem;
+        }
+
+        .g-recaptcha {
+          transform: scale(0.9);
+          transform-origin: center;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .auth-container {
+          padding: 0.5rem;
+        }
+
+        .auth-card {
+          padding: 1.25rem;
+          margin: 0 0.25rem;
+        }
+
+        .auth-title {
+          font-size: 1.4rem;
+        }
+
+        .form-control {
+          height: 42px;
+          font-size: 0.85rem;
+        }
+
+        .btn-primary,
+        .btn-google {
+          height: 42px;
+          font-size: 0.85rem;
+        }
+
+        .g-recaptcha {
+          transform: scale(0.8);
+        }
+      }
+
+      @media (max-width: 400px) {
+        .auth-card {
+          padding: 1rem;
+        }
+
+        .auth-title {
+          font-size: 1.3rem;
+        }
+
+        .form-control {
+          height: 40px;
+          padding: 0.5rem 2rem 0.5rem 2rem;
+        }
+
+        .btn-primary,
+        .btn-google {
+          height: 40px;
+        }
+
+        .g-recaptcha {
+          transform: scale(0.75);
+        }
+      }
+
+      @media (max-width: 991px) {
+        .navbar-nav {
+          flex-direction: column;
+          width: 100%;
+        }
+
+        .nav-item {
+          width: 100%;
+        }
+
+        .nav-link {
+          text-align: center;
+          width: 100%;
+          padding: 12px 15px;
+        }
+
+        .dropdown-menu {
+          position: static;
+          float: none;
+          width: 100%;
+          margin-top: 0;
+          background-color: rgba(255, 255, 255, 0.95);
+          border: none;
+        }
+      }
+
+      @media (max-height: 600px) and (orientation: landscape) {
+        .auth-container {
+          padding: 0.5rem;
+        }
+
+        .auth-card {
+          padding: 1rem;
+          max-height: 90vh;
+          overflow-y: auto;
+        }
+
+        .auth-title {
+          font-size: 1.3rem;
+          margin-bottom: 1rem;
+        }
+
+        .form-group {
+          margin-bottom: 1rem;
+        }
+      }
+
+      .btn-primary:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+      }
+
+      .form-control:focus,
+      .btn-primary:focus,
+      .btn-google:focus,
+      .nav-link:focus {
+        outline: 2px solid #007bff;
+        outline-offset: 2px;
+      }
     </style>
   </head>
   <body>
@@ -219,11 +455,12 @@
 
         <% if (typeof errorMessage !== 'undefined' && errorMessage) { %>
           <div class="error-message">
-            <i class="fas fa-exclamation-circle"></i> <%= errorMessage %>
+            <i class="fas fa-exclamation-circle"></i> 
+            <span><%= errorMessage %></span>
           </div>
         <% } %>
 
-        <form action="/login" method="POST">
+        <form action="/login" method="POST" id="loginForm">
           <div class="form-group">
             <i class="fas fa-envelope email-icon"></i>
             <input 
@@ -232,6 +469,7 @@
               placeholder="Email address" 
               name="email"
               required
+              autocomplete="email"
             >
           </div>
  
@@ -244,12 +482,16 @@
               name="password"
               id="password"
               required
+              autocomplete="current-password"
             >
-            <i class="fas fa-eye-slash toggle-password" onclick="togglePassword()"></i>
+            <i class="fas fa-eye-slash toggle-password" onclick="togglePassword()" tabindex="0"></i>
           </div>
+          
           <div class="g-recaptcha" data-sitekey="6Le9OAorAAAAADB-vOWgyCEXl1E2WexAtROtIKB5"></div>
           
-          <button type="submit" class="btn btn-primary">Sign In</button>
+          <button type="submit" class="btn btn-primary" id="loginBtn">
+            <span class="btn-text">Sign In</span>
+          </button>
 
           <div class="forgot">
             <a href="/forgot-password">Forgot your password?</a>
@@ -264,15 +506,16 @@
         </a>
 
         <div class="auth-links">
-          Don't have an account? <a href="/signup">Sign up </a>
+          Don't have an account? <a href="/signup">Sign up</a>
         </div>
       </div>
     </div>
+
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script>
       function togglePassword() {
-        let passwordField = document.getElementById("password");
-        let toggleIcon = document.querySelector(".toggle-password");
+        const passwordField = document.getElementById("password");
+        const toggleIcon = document.querySelector(".toggle-password");
     
         if (passwordField.type === "password") {
           passwordField.type = "text";
@@ -284,7 +527,33 @@
           toggleIcon.classList.add("fa-eye-slash");
         }
       }
+
+      document.querySelector('.toggle-password').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          togglePassword();
+        }
+      });
+
+      document.getElementById('loginForm').addEventListener('submit', function() {
+        const submitBtn = document.getElementById('loginBtn');
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing In...';
+      });
+
+      document.addEventListener('click', function(event) {
+        const navbar = document.querySelector('.navbar-collapse');
+        const toggler = document.querySelector('.navbar-toggler');
+        
+        if (navbar && navbar.classList.contains('show')) {
+          if (!navbar.contains(event.target) && !toggler.contains(event.target)) {
+            const bsCollapse = new bootstrap.Collapse(navbar, {
+              toggle: false
+            });
+            bsCollapse.hide();
+          }
+        }
+      });
     </script>
-    
   </body>
 </html>
